@@ -1,6 +1,4 @@
 node_modules/
-.next/
-out/
 dist/
 build/
 
@@ -24,4 +22,3 @@ Thumbs.db
 .idea/
 
 *.tsbuildinfo
-.vercel/
