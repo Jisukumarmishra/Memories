@@ -1,26 +1,32 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Post from "./Post/Post";
-import { getPosts } from "../../redux/features/posts/postsSlice";
 
-const Posts = () => {
-  const dispatch = useDispatch();
+import React from 'react';
+import { Grid, CircularProgress } from '@mui/material';
+import { useSelector } from 'react-redux';
 
-  const posts = useSelector((state) => state.posts.posts);
+import Post from './Post/Post';
 
-  useEffect(() => {
-    dispatch(getPosts());
-  }, [dispatch]);
+const Posts = ({ setCurrentId }) => {
+  const posts = useSelector((state) => state.posts);
 
-  return (
-    <>
-      <div>
-        {posts.map((post) => (
-          <Post key={post._id} post={post} />
-        ))}
-      </div>
-    </>
+  return !posts.length ? (
+    <CircularProgress />
+  ) : (
+    <Grid
+      container
+      alignItems="stretch"
+      spacing={3}
+      sx={{
+        marginTop: '20px',
+      }}
+    >
+      {posts.map((post) => (
+        <Grid key={post._id} size={{ xs: 12, sm: 6, md: 6 }}>
+          <Post post={post} setCurrentId={setCurrentId} />
+        </Grid>
+      ))}
+    </Grid>
   );
 };
 
 export default Posts;
+
