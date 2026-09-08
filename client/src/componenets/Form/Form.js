@@ -1,11 +1,16 @@
 import React, { useState } from 'react'
 import { TextField, Button, Typography, Paper, Box } from '@mui/material'
-
+import { useDispatch } from 'react-redux'
+import { createPost } from '../../actions/posts'
 const Form = () => {
   const [postData, setPostData] = useState({ creator: '', title: '', message: '', tags: '', selectedFile: '' })
+  
+  const dispatch = useDispatch();
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    dispatch(createPost(postData));
     console.log(postData)
   }
 
