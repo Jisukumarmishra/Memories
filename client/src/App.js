@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   AppBar,
@@ -13,6 +13,8 @@ import Form from "./componenets/Form/Form";
 import memories from "./images/memories.png";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
+
   return (
     <Container maxWidth="lg">
       <AppBar
@@ -56,11 +58,11 @@ const App = () => {
             spacing={3}
           >
             <Grid size={{ xs: 12, sm: 7 }}>
-              <Posts />
+              <Posts setCurrentId={setCurrentId} />
             </Grid>
 
-            <Grid size={{ xs: 12, sm: 4 }}>
-              <Form />
+            <Grid size={{ xs: 12, sm: 4 }} sx={{ ml: { sm: 2 } }}>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>

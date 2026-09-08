@@ -33,6 +33,7 @@ const Posts = ({ setCurrentId }) => {
       container
       alignItems="stretch"
       spacing={3}
+      sx={{ mt: 1 }}
     >
       {posts.map((post) => (
         <Grid
